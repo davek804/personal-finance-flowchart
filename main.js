@@ -1,31 +1,8 @@
 container = document.getElementById('container');
 
-var phases = {
-	0 : "Budget & reduce expenses, set realistic goals.",
-	1 : "Build an emergency fund",
-	2 : "Employer-sponsored matching funds",
-	3 : "Pay down high/moderate interest debts",
-	4 : "Save for retirement in an IRA & higher ed. expenses", 
-	5 : "Save more for retirement",
-	6 : "Save for other goals & advanced methods"
-}
-
-var categories = {
-	0 : "Step 0: Budget",
-	1 : "Step 1: E-Fund",
-	2 : "Step 2: Matching",
-	3 : "Step 3: Debts",
-	4 : "Step 4: Retirement",
-	5 : "Step 5: More Ret.",
-	6 : "Step 6: Advanced",
-}
-
-
 // Header setup
 var header = document.getElementById("header"); 
 header.setAttribute("id", "header");
-
-
 
 var cssId = 'myCss';  // you could encode the css path itself to generate id..
 if (!document.getElementById(cssId)) {
@@ -39,42 +16,40 @@ if (!document.getElementById(cssId)) {
 	head.appendChild(link);
 }
 
-
-function createtooltipDiv(id, specificPhase) {
-
-	
+function createtooltipDiv(bubble) {	
 	tooltipDiv = document.createElement('div');
 	titleDiv = document.createElement("div")
-	subtitleDiv = document.createElement("div");
-	titleP = document.createElement("span")
-	subtitleP = document.createElement("p");
+	bodyDiv = document.createElement("div");
+	titleP = document.createElement("p")
+	bodyP = document.createElement("p");
 
-	tooltipDiv.setAttribute("id", "tooltipDiv");
+	tooltipDiv.setAttribute("class", "tooltip-"+bubble.category + " tooltip");
+	tooltipDiv.setAttribute("id", bubble.id);
 	
 	// Build a titlebar for each tooltipDiv. 
-	titleDiv.setAttribute("id", "tooltipDiv-title");
-	titleDiv.setAttribute("class", "tooltipDiv-title-div-"+id);
+	titleDiv.setAttribute("class", "tooltip-title-" + bubble.category + " tooltip-title");
 	titleP.setAttribute("class", "titleString");
-	titleP.appendChild(document.createTextNode(categories[id]));
+	titleP.appendChild(document.createTextNode(bubble.title));
 	titleDiv.appendChild(titleP);
 
 	// Build a subtitle.
-	subtitleDiv.setAttribute("id", "tooltipDiv-body");
-	subtitleDiv.setAttribute("class", "tooltipDiv-body-div-"+id);
-	subtitleP.setAttribute("class", "sub-title-string");
-	subtitleP.appendChild(document.createTextNode(specificPhase));
-	subtitleDiv.appendChild(subtitleP);
-
-	tooltipDiv.setAttribute("class", "tooltipDiv");
-	tooltipDiv.setAttribute("class", "tooltipDiv-"+id);
+	bodyDiv.setAttribute("class", "tooltip-body-"+bubble.category + " tooltip-body");
+	bodyP.setAttribute("class", "sub-title-string");
+	bodyP.appendChild(document.createTextNode(bubble.body));
+	bodyDiv.appendChild(bodyP);
 
 	tooltipDiv.appendChild(titleDiv);
-	tooltipDiv.appendChild(subtitleDiv)
+	tooltipDiv.appendChild(bodyDiv)
 	//Put it all together into the container.
 	return tooltipDiv;
 }
 
-for (i = 0; i < Object.keys(phases).length; i++) {
+// Populate bubbles. 
+for (i in bubbles) {
+	container.appendChild(createtooltipDiv(bubbles[i]));
+}
 
-	container.appendChild(createtooltipDiv(i, phases[i]));
+function linkBubbles() {
+	container = document.getElementById("container");
+
 }
