@@ -46,7 +46,7 @@ function createtooltipDiv(id, specificPhase) {
 	tooltipDiv = document.createElement('div');
 	titleDiv = document.createElement("div")
 	subtitleDiv = document.createElement("div");
-	titleP = document.createElement("p")
+	titleP = document.createElement("span")
 	subtitleP = document.createElement("p");
 
 	tooltipDiv.setAttribute("id", "tooltipDiv");

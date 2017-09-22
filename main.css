@@ -74,9 +74,7 @@
 #tooltipDiv-title {
 	width:172px;
 	height:30%;
-	top:2px;
 	margin: 0 auto;
-	vertical-align:middle;
 }
 
 
@@ -87,12 +85,16 @@
 
 .titleString {
 	font-weight:bold;
-
+	font-family: Lato;
+	display: inline-block;
+	vertical-align: middle;
+	line-height:normal;
+	height:100%;
 }
 .sub-title-string {
 	font-style:italic;
 	text-align:center;
-	height:inherit;
+	height:100%;
 	overflow:hidden;
 	padding:2px;
 }
