@@ -1,3 +1,5 @@
+container = document.getElementById('container');
+
 var phases = {
 	0 : "Budget & reduce expenses, set realistic goals.",
 	1 : "Build an emergency fund",
@@ -38,41 +40,41 @@ if (!document.getElementById(cssId)) {
 }
 
 
-function createTooltip(id, specificPhase) {
+function createtooltipDiv(id, specificPhase) {
 
-	container = document.getElementById('container')
-	tooltip = document.createElement('div');
-	tooltip.setAttribute("id", "tooltip");
 	
-	// Build a quick titlebar for each tooltip. 
-	var titleDiv = document.createElement("div")
-	titleDiv.setAttribute("id", "tooltip-title");
-	titleDiv.setAttribute("class", "tooltip-title-div-"+id);
+	tooltipDiv = document.createElement('div');
+	titleDiv = document.createElement("div")
+	subtitleDiv = document.createElement("div");
 	titleP = document.createElement("p")
+	subtitleP = document.createElement("p");
+
+	tooltipDiv.setAttribute("id", "tooltipDiv");
+	
+	// Build a titlebar for each tooltipDiv. 
+	titleDiv.setAttribute("id", "tooltipDiv-title");
+	titleDiv.setAttribute("class", "tooltipDiv-title-div-"+id);
 	titleP.setAttribute("class", "titleString");
 	titleP.appendChild(document.createTextNode(categories[id]));
 	titleDiv.appendChild(titleP);
-	tooltip.appendChild(titleDiv);
 
-	// Build out the subtitle.
-	var phase = specificPhase;
-	phaseP = document.createElement("p");
-	phaseP.setAttribute("class", "titleString");
-	phaseP.appendChild(document.createTextNode(phase));
-	tooltip.appendChild(phaseP);	
-	
+	// Build a subtitle.
+	subtitleDiv.setAttribute("id", "tooltipDiv-body");
+	subtitleDiv.setAttribute("class", "tooltipDiv-body-div-"+id);
+	subtitleP.setAttribute("class", "sub-title-string");
+	subtitleP.appendChild(document.createTextNode(specificPhase));
+	subtitleDiv.appendChild(subtitleP);
 
-	// TODO - Make the ability to style/display per 'category'.
-	
-	tooltip.setAttribute("class", "tooltip");
-	tooltip.setAttribute("class", "tooltip-"+id);
+	tooltipDiv.setAttribute("class", "tooltipDiv");
+	tooltipDiv.setAttribute("class", "tooltipDiv-"+id);
 
-
-
+	tooltipDiv.appendChild(titleDiv);
+	tooltipDiv.appendChild(subtitleDiv)
 	//Put it all together into the container.
-	container.appendChild(tooltip);
+	return tooltipDiv;
 }
 
 for (i = 0; i < Object.keys(phases).length; i++) {
-	createTooltip(i, phases[i]);
+
+	container.appendChild(createtooltipDiv(i, phases[i]));
 }
