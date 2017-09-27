@@ -5,14 +5,21 @@
 }
 
 #container > * {
-    margin-right: 7px;
-    margin-bottom: 7px;
+
+}
+
+.spacer { 
+	height:2%; 
 }
 
 .tooltip {
 	width:250px;
 	height:160px;
 	display:inline-block;
+	overflow:hidden;
+	border-radius:15px;
+		margin-right: 7px;
+	margin-bottom: 7px;
 }
 
 .tooltip-title {
@@ -20,88 +27,127 @@
 	height:35%;
 	margin: 0 auto;
 	background-color:white;
+	display:table;
 }
 
+.tooltip-title-full {
+	height: 100%;
+	display: table;
+}
 
 .tooltip-body {
 	height:65%;
+	width:100%;
 	background-color: white;
+	display:table;
+	overflow:scroll;
+}
+
+.tooltip-body-empty { 
+	height: 0px;
 }
 
 .tooltip-body-0 {
-	background-color: #90a4ae;
-	box-shadow:0px 0px 0px 2px #62757f inset;
+	background-color: #e2f1f8;
+	box-shadow:0px 0px 0px 2px #b0bec5 inset;
 }
 .tooltip-title-0 {
-	background-color: #62757f;
+	background-color: #b0bec5;
 }
 
 .tooltip-body-1 {
-	background-color: #ffccbc;
-	box-shadow:0px 0px 0px 2px #cb9b8c inset;
+	background-color: #ffcccb;
+	box-shadow:0px 0px 0px 2px #ef9a9a inset;
 }
 .tooltip-title-1 {
-	background-color: #cb9b8c;
+	background-color: #ef9a9a;
 }
 
 .tooltip-body-2 {
-	background-color: #fff9c4;
-	box-shadow:0px 0px 0px 2px #cbc693 inset;
+	background-color: #ffc4ff;
+	box-shadow:0px 0px 0px 2px #ce93d8 inset;
 }
 .tooltip-title-2 {
-	background-color: #cbc693;
+	background-color: #ce93d8;
 }
 
 .tooltip-body-3 {
-	background-color: #b2ebf2;
-	box-shadow:0px 0px 0px 2px #81b9bf inset;
+	background-color: #b6ffff;
+	box-shadow:0px 0px 0px 2px #81d4fa inset;
 }
 .tooltip-title-3 {
-	background-color: #81b9bf;
+	background-color: #81d4fa;
 }
 
 .tooltip-body-4 {
-	background-color: #bbdefb;
-	box-shadow:0px 0px 0px 2px #8aacc8 inset;
+	background-color: #d7ffd9;
+	box-shadow:0px 0px 0px 2px #a5d6a7 inset;
 }
 .tooltip-title-4 {
-	background-color: #8aacc8;
+	background-color: #a5d6a7;
 }
 
 .tooltip-body-5 {
-	background-color: #29b6f6;
-	box-shadow:0px 0px 0px 2px #0086c3 inset;
+	background-color: #f8ffd7;
+	box-shadow:0px 0px 0px 2px #c5e1a5 inset;
 }
 .tooltip-title-5 {
-	background-color: #0086c3;
+	background-color: #c5e1a5;
 }
 
 .tooltip-body-6 {
-	background-color: #e1bee7;
-	box-shadow:0px 0px 0px 2px #af8eb5 inset;
+	background-color: #ffffb0;
+	box-shadow:0px 0px 0px 2px #ffcc80 inset;
 }
 .tooltip-title-6 {
-	background-color: #af8eb5;
+	background-color: #ffcc80;
 }
 
 .titleString {
 	font-weight:bold;
 	font-family: Lato;
-	display: inline-block;
+	display: table-cell;
 	vertical-align: middle;
-	line-height:normal;
-	height:100%;
-	width:100%;
+	text-align:center;
+	width: 100%;
+	padding-left:2px;
+	padding-right:2px;
 }
 .sub-title-string {
 	font-style:italic;
 	text-align:center;
-	overflow:hidden;
+	vertical-align: middle;
 	height:100%;
+	display:table-cell;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.sub-title-string-empty {
+	height:0%;
 }
 
 #header {
 	width:100%;
+}
+
+.line {
+	width:0;
+	height:0;
+	border-style: solid;
+	border-width: 10px 0px 10px 0px;
+	border-color: black;
+	display:inline-block;
+	margin:0 auto;
+}
+
+.right-arrow { 
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 0 10px 20px;
+	border-color: transparent transparent transparent #000000;
+	display:inline-block;
 }
 
 h1 {

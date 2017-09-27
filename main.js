@@ -33,10 +33,18 @@ function createtooltipDiv(bubble) {
 	titleDiv.appendChild(titleP);
 
 	// Build a subtitle.
-	bodyDiv.setAttribute("class", "tooltip-body-"+bubble.category + " tooltip-body");
-	bodyP.setAttribute("class", "sub-title-string");
-	bodyP.appendChild(document.createTextNode(bubble.body));
-	bodyDiv.appendChild(bodyP);
+	if (bubble.body == null) {
+		
+		titleDiv.setAttribute("class", "tooltip-title-full " + "tooltip-title-" + bubble.category + " tooltip-title");
+		bodyDiv.setAttribute("class", "tooltip-body-empty " + "tooltip-body-"+bubble.category + " tooltip-body");
+		bodyP.setAttribute("class", "sub-title-string-empty " + "sub-title-string");
+
+	} else {
+		bodyP.appendChild(document.createTextNode(bubble.body));
+		bodyDiv.setAttribute("class", "tooltip-body-"+bubble.category + " tooltip-body");
+		bodyP.setAttribute("class", "sub-title-string");
+		bodyDiv.appendChild(bodyP);
+	}
 
 	tooltipDiv.appendChild(titleDiv);
 	tooltipDiv.appendChild(bodyDiv)
@@ -47,6 +55,30 @@ function createtooltipDiv(bubble) {
 // Populate bubbles. 
 for (i in bubbles) {
 	container.appendChild(createtooltipDiv(bubbles[i]));
+	if (i == 6) {
+		spacer = document.createElement("div");
+		spacer.setAttribute("class", "spacer");
+		container.appendChild(spacer);
+	}
+	if (bubbles[i].links != null) {
+		for (j in bubbles[i].links) {
+			if (bubbles[i].links[j].as == null) { 
+				console.log("This is a simple one, straight to the next.")
+				rightArrow = document.createElement("div");
+				rightArrow.setAttribute("class", "right-arrow");
+				container.appendChild(rightArrow);
+				line = document.createElement("div");
+				line.setAttribute("class", "line");
+				container.appendChild(line);
+			}
+			if (bubbles[i].links[j].as == true) {
+				console.log("This is a true conn ( " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as + ").");
+			}
+			if (bubbles[i].links[j].as == false) {
+				console.log("This is a false conn ( " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as + ").");
+			}
+		}
+	}	
 }
 
 function linkBubbles() {
