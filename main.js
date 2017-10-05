@@ -63,20 +63,49 @@ for (i in bubbles) {
 	if (bubbles[i].links != null) {
 		for (j in bubbles[i].links) {
 			if (bubbles[i].links[j].as == null) { 
-				console.log("This is a simple one, straight to the next.")
+
+				console.log("BOX ID: " + i + " is a basic link to the next");
+				tooltip = document.getElementById(i);
+				style = document.defaultView.getComputedStyle(tooltip, null);
+				
+				// Create an anchor point / div for us to attach our arrows to. 
+				//console.log("Top: " + Math.round(getTop(tooltip)));
+				loc = document.getElementById(i).getBoundingClientRect().top - window.scrollY;
+				//console.log("Top: " + Math.round(loc));
+				
+				height = style.height;
+				height = height.slice(0, height.length-2);
+				//console.log("Height: " + height);
+				pointY = loc + height/2;
+				pointY = Math.round(pointY);
+				//console.log (pointY);
+				var offset_t = $("#"+i).offset().top - $(window).scrollTop();
+
+				console.log("Jquery offset: " + offset_t);
+
+				arrowContainer = document.createElement("div");
+				arrowContainer.setAttribute("style", "height:100%");
+
 				rightArrow = document.createElement("div");
 				rightArrow.setAttribute("class", "right-arrow");
 				container.appendChild(rightArrow);
 				line = document.createElement("div");
 				line.setAttribute("class", "line");
-				container.appendChild(line);
+				rightArrow.setAttribute("style", "z-index:100;position:absolute;top:" + pointY + ";");
+				//rightArrow.setAttribute("style", "vertical-align:middle");
+				//container.appendChild(line);
+
+				arrowContainer.appendChild(rightArrow);
+				tooltip.appendChild(arrowContainer);
+			} else {
+				if (bubbles[i].links[j].as == true) {
+					console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+				}
+				if (bubbles[i].links[j].as == false) {
+					console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+				}
 			}
-			if (bubbles[i].links[j].as == true) {
-				console.log("This is a true conn ( " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as + ").");
-			}
-			if (bubbles[i].links[j].as == false) {
-				console.log("This is a false conn ( " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as + ").");
-			}
+			console.log("\n");
 		}
 	}	
 }
@@ -84,4 +113,17 @@ for (i in bubbles) {
 function linkBubbles() {
 	container = document.getElementById("container");
 
+}
+
+function getOffset(el) {
+	el = el.getBoundingClientRect();
+	return {
+		left: el.width + window.scrollX,
+		top: el.top + window.scrollY
+	}
+}
+
+function getTop(el) {
+	el = el.getBoundingClientRect();
+	return el.top + window.scrolly
 }

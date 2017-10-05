@@ -106,6 +106,7 @@
 .titleString {
 	font-weight:bold;
 	font-family: Lato;
+	font-size:10pt;
 	display: table-cell;
 	vertical-align: middle;
 	text-align:center;
@@ -116,6 +117,7 @@
 .sub-title-string {
 	font-style:italic;
 	text-align:center;
+	font-size:8pt;
 	vertical-align: middle;
 	height:100%;
 	display:table-cell;
