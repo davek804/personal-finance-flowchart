@@ -62,9 +62,13 @@ for (i in bubbles) {
 	}
 	if (bubbles[i].links != null) {
 		for (j in bubbles[i].links) {
+			buildLinkLine(bubbles[i], bubbles[i].links[j], bubbles[i].links[j].from);
 			if (bubbles[i].links[j].as == null) { 
 
-				console.log("BOX ID: " + i + " is a basic link to the next");
+				//console.log("BOX ID: " + i + " is a basic link to the next");
+
+				//buildLinkLine(bubbles[i], bubbles[i].links[j], bubbles[i].links[j].from);
+
 				tooltip = document.getElementById(i);
 				style = document.defaultView.getComputedStyle(tooltip, null);
 				
@@ -81,7 +85,7 @@ for (i in bubbles) {
 				//console.log (pointY);
 				var offset_t = $("#"+i).offset().top - $(window).scrollTop();
 
-				console.log("Jquery offset: " + offset_t);
+				//console.log("Jquery offset: " + offset_t);
 
 				arrowContainer = document.createElement("div");
 				arrowContainer.setAttribute("style", "height:100%");
@@ -99,15 +103,36 @@ for (i in bubbles) {
 				tooltip.appendChild(arrowContainer);
 			} else {
 				if (bubbles[i].links[j].as == true) {
-					console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+					//console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+					buildLinkLine(bubbles[i], bubbles[i].links[j].from);
 				}
 				if (bubbles[i].links[j].as == false) {
-					console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+					//console.log("BOX ID: " +i+ " links to " + bubbles[i].links[j].to + " as " + bubbles[i].links[j].as);
+					buildLinkLine(bubbles[i], bubbles[i].links[j].from);
 				}
 			}
-			console.log("\n");
+			//console.log("\n");
 		}
 	}	
+}
+
+function buildLinkLine(bubble, link, from) {
+	switch (from) {
+		case "top":
+		console.log("TOP-LINK from ID " + "#" + bubble.id + " to ID " + link.to + " with arrow type " + link.as + ".");
+		break;
+		case "bottom":
+		console.log("BOTTOM-LINK from ID " + "#" + bubble.id + " to ID " + link.to + " with arrow type " + link.as + ".");
+		break;
+		case "left":
+		console.log("LEFT-LINK from ID " + "#" + bubble.id + " to ID " + link.to + " with arrow type " + link.as + ".");
+		break;
+		case "right":
+		console.log("RIGHT-LINK from ID " + "#" + bubble.id + " to ID " + link.to + " with arrow type " + link.as + ".");
+		break;
+		default:
+		console.log("Error!"); 
+	}
 }
 
 function linkBubbles() {
