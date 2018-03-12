@@ -117,6 +117,8 @@ for (i in bubbles) {
 }
 
 function buildLinkLine(bubble, link, from) {
+	tooltip = document.getElementById(bubble.id);
+	console.log("Width: " + tooltip.offsetWidth + " Height: " + tooltip.offsetHeight );
 	switch (from) {
 		case "top":
 		console.log("TOP-LINK from ID " + "#" + bubble.id + " to ID " + link.to + " with arrow type " + link.as + ".");
