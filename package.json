@@ -1,0 +1,14 @@
+{
+  "name": "personal-finance-flowchart",
+  "app": "app",
+  "dist": "dist",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "diagram-js": "2.6.1"
+  },
+  "engines": {
+    "node": ">=0.12.2"
+  },
+  "devDependencies": {}
+}
